@@ -12,6 +12,8 @@ def doGimBab(keyword):
 
 def getGimbabSearchResult(keyword):
     pagination = getPagination(keyword)
+    if pagination == -1:
+        return []
     returnList = []
     for idx in range(pagination):
         url = "http://gimbabrecords.com/product/search.html?banner_action=&keyword=" + keyword + "&page=" + str(idx+1)
@@ -45,6 +47,10 @@ def getPagination(keyword):
     url = "http://gimbabrecords.com/product/search.html?banner_action=&keyword=" + keyword
     content = returnContent(url)
     bs = BeautifulSoup(content, 'html.parser')
-    paging = bs.find_all("div", attrs={'id': 'paging'})[0]
+    paging = bs.find_all("div", attrs={'id': 'paging'})
+    if not paging:
+        return -1
+    else:
+        paging = paging[0]
     pagination = paging.find_all("li", attrs={'class':'xans-record-'})
     return len(pagination)
