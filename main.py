@@ -1,4 +1,5 @@
-from gimbab import getGimbabSearchResult, doGimBab
+from gimbab import doGimBab
+from seoulvinyl import doSeoulVinyl
 
 if __name__ == "__main__":
     print("Keyword you want to Search : ", end="")
@@ -8,4 +9,6 @@ if __name__ == "__main__":
     doGimBab(keyword)
     print("=========== ============= ===========")
 
-    print("")
+    print("===========  SeoulVinyl   ===========")
+    doSeoulVinyl(keyword)
+    print("=========== ============= ===========")
