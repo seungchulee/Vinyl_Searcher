@@ -1,7 +1,14 @@
-import requests
 from bs4 import BeautifulSoup
 from bypass import returnContent
 from vinyl import Vinyl
+
+
+def doGimBab(keyword):
+    gimbabList = getGimbabSearchResult(keyword)
+    print(len(gimbabList), "개의 결과가 있습니다")
+    for gim in gimbabList:
+        print(gim.title, gim.price, gim.soldOut, gim.link)
+
 
 def getGimbabSearchResult(keyword):
     pagination = getPagination(keyword)
@@ -32,6 +39,7 @@ def getGimbabSearchResult(keyword):
             vinylClass = Vinyl(link, title, price, soldout)
             returnList.append(vinylClass)
     return returnList
+
 
 def getPagination(keyword):
     url = "http://gimbabrecords.com/product/search.html?banner_action=&keyword=" + keyword

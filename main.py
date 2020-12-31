@@ -1,9 +1,10 @@
-from gimbab import getGimbabSearchResult
+from gimbab import getGimbabSearchResult, doGimBab
 
 if __name__ == "__main__":
+    print("Keyword you want to Search : ", end="")
     keyword = input()
-    gimbabList = getGimbabSearchResult(keyword)
-    for gim in gimbabList:
-        print(gim.price, gim.title, gim.link, gim.soldOut)
 
+    print("=========== GimBabRecords ===========")
+    doGimBab(keyword)
+    print("=========== ============= ===========")
 
