@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-from bypass import returnContent
-from vinyl import Vinyl
+from back.bypass import returnContent
+from back.vinyl import Vinyl
 
 
 def doGimBab(keyword):

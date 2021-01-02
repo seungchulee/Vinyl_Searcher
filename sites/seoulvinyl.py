@@ -1,6 +1,6 @@
 import requests
 import json
-from vinyl import Vinyl
+from back.vinyl import Vinyl
 
 
 def doSeoulVinyl(keyword):
