@@ -22,6 +22,7 @@ def getGimbabSearchResult(keyword):
         li_element = bs.find_all("li", attrs={'class': 'item xans-record-'})
 
         for el in li_element:
+            img_src = "http://" + el.find('img')['src'][2:]
             spanData = el.find_all("span", attrs={'style':"font-size:13px;color:#000000;font-weight:bold;"})
             isSoldOut = el.find_all("img", attrs={'alt': "품절"})
             href = el.find("a")['href']
@@ -38,7 +39,7 @@ def getGimbabSearchResult(keyword):
                     title = spanData[i].text
                 if i == 3:
                     price = spanData[i].text
-            vinylClass = Vinyl(link, title, price, soldout, "김밥레코즈", "")
+            vinylClass = Vinyl(link, title, price, soldout, "김밥레코즈", img_src)
             returnList.append(vinylClass)
     return returnList
 
