@@ -38,7 +38,7 @@ def getGimbabSearchResult(keyword):
                     title = spanData[i].text
                 if i == 3:
                     price = spanData[i].text
-            vinylClass = Vinyl(link, title, price, soldout, "김밥레코즈")
+            vinylClass = Vinyl(link, title, price, soldout, "김밥레코즈", "")
             returnList.append(vinylClass)
     return returnList
 

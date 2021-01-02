@@ -35,7 +35,7 @@ def getSeoulVinylResult(keyword):
             title = arg['productName']
             price = arg['productAppliedDiscountEventPrice']
             soldout = productSoldout(arg['productNo'])
-            vinyl = Vinyl(link, title, price, soldout, "SeoulVinyl")
+            vinyl = Vinyl(link, title, price, soldout, "SeoulVinyl", "")
             returnList.append(vinyl)
         i += 1
     return returnList
