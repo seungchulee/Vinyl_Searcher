@@ -3,28 +3,27 @@ import json
 from back.vinyl import Vinyl
 from bs4 import BeautifulSoup
 
+def doWelcomeRecords(keyword):
+    welcomeResult = getWelcomeResult(keyword)
+    print(len(welcomeResult), "개의 결과가 있습니다")
+    for wel in welcomeResult:
+        print(wel.title, wel.price, wel.soldOut, wel.link)
 
-def doSeoulVinyl(keyword):
-    seoulList = getSeoulVinylResult(keyword)
-    print(len(seoulList), "개의 결과가 있습니다")
-    for seo in seoulList:
-        print(seo.title, seo.price, seo.soldOut, seo.link)
 
-
-def getSeoulVinylResult(keyword):
+def getWelcomeResult(keyword):
     i = 1
     returnList = []
     while True:
         payload = {
-            "memberNo": 99047,
+            "memberNo": 103345,
             "shopCategoryNoList": "categorized",
             "itemType": "productList",
             "page": i,
-            "npp": 16,
+            "npp": 48,
             "searchKeyword": keyword,
-            "siteNo": 99047
+            "siteNo": 103345
         }
-        requestUrl = "https://www.seoulvinyl.com/_shop/getShopProductSummariseBySearchKeyword"
+        requestUrl = "https://welcomerecords.kr/_shop/getShopProductSummariseBySearchKeyword"
         resp = requests.post(requestUrl, data=payload)
         content = resp.content
         jsonString = json.loads(content)
@@ -32,7 +31,7 @@ def getSeoulVinylResult(keyword):
         if not products:
             break
         for arg in products:
-            link = "https://www.seoulvinyl.com/product/" + arg['productAddress']
+            link = "https://www.welcomerecords.kr/product/" + arg['productAddress']
             title = arg['productName']
             price = arg['productAppliedDiscountEventPrice']
             img_src = arg['imageUrl']
@@ -40,28 +39,28 @@ def getSeoulVinylResult(keyword):
             if prevsoldout:
                 soldout = productSoldout(arg['productAddress'])
                 if soldout:
-                    vinyl = Vinyl(link, title, price, soldout, "SeoulVinyl", img_src)
+                    vinyl = Vinyl(link, title, price, soldout, "WelcomeRecords", img_src)
                     returnList.append(vinyl)
         i += 1
     return returnList
 
 
 def productSoldout(name):
-    resp = requests.get("https://www.seoulvinyl.com/product/" + name)
+    resp = requests.get("https://www.welcomerecords.kr/product/" + name)
     bs = BeautifulSoup(resp.content, 'html.parser')
     b = bs.find('div', attrs={'class': 'productQuantityDiv row designSettingElement text-body'})
     return b is not None
 
 
 def productPrevSoldout(productNo):
-    soldOutRequest = "https://www.seoulvinyl.com/_shop/getShopProductByMemberNoAndProductNo"
+    soldOutRequest = "https://www.welcomerecords.kr/_shop/getShopProductByMemberNoAndProductNo"
     soldPayload = {
-        "memberNo": 99047,
+        "memberNo": 103345,
         "productNo": productNo,
-        "siteNo": 99047,
-        "siteLink": "homeboy",
+        "siteNo": 103345,
+        "siteLink": "welcomerecords",
         "pageNo": 0,
     }
     soldResp = requests.post(soldOutRequest, data=soldPayload)
     soldString = json.loads(soldResp.content)
-    return soldString['shopProduct']['inventory']['total'] != 0
+    return soldString['shopProduct']['sellStatus'] != "soldOut_selling"

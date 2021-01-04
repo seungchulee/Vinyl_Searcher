@@ -24,4 +24,5 @@ show you vinyl result with your keyword
 
 2020.01.04
 > soundlook(http://soundlook.co.kr/index.html)  
-> soundsgood(https://www.soundsgood-store.com/)
+> soundsgood(https://www.soundsgood-store.com/)  
+> welcomerecords(https://welcomerecords.kr/)

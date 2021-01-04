@@ -4,6 +4,7 @@ from sites.dope import doBeatitMusic
 from sites.naverBase import doNaver
 from sites.soundlook import doSoundLook
 from sites.soundsgood import doSoundsGood
+from sites.welcomerecords import doWelcomeRecords
 
 if __name__ == "__main__":
     print("Keyword you want to Search : ", end="")
@@ -32,3 +33,10 @@ if __name__ == "__main__":
     print("===========  SoundsGood   ===========")
     doSoundsGood(keyword)
     print("=========== ============= ===========")
+
+    print("========== WelcomeRecords ===========")
+    doWelcomeRecords(keyword)
+    print("=========== ============= ===========")
+
+# sixshop base : welcome, soundsgood, seoulvinyl
+
