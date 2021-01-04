@@ -5,8 +5,8 @@ from back.vinyl import Vinyl
 def doBeatitMusic(keyword):
     seoulList = getBeatitMusicResult(keyword)
     print(len(seoulList), "개의 결과가 있습니다")
-    for seo in seoulList:
-        print(seo.title, seo.price, seo.soldOut, seo.link)
+    for dop in seoulList:
+        print(dop.title, dop.price, dop.soldOut, dop.link)
 
 def getBeatitMusicResult(keyword):
     returnList = []
@@ -31,8 +31,9 @@ def getBeatitMusicResult(keyword):
                 priceTag = data.find('ul', attrs={'class':'xans-element- xans-search xans-search-listitem spec'})
                 price = priceTag.find_all('span', attrs={'style':'font-size:12px;color:#008BCC;font-weight:bold;'})[-1].text
                 img_src = "http://" + data.find('img')['src'][2:]
-                vinyl = Vinyl(link, vinylTitle, price, soldout, "beatit", img_src)
-                returnList.append(vinyl)
+                if soldout:
+                    vinyl = Vinyl(link, vinylTitle, price, soldout, "beatit", img_src)
+                    returnList.append(vinyl)
 
     return returnList
 
