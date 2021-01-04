@@ -20,3 +20,7 @@ show you vinyl result with your keyword
 레코드스톡(https://smartstore.naver.com/recordstock), 라보앤드(https://smartstore.naver.com/lavoand/),   
 마뮤(https://smartstore.naver.com/mamustore), 판다바이닐(https://smartstore.naver.com/pandavinyl),   
 뮤직랜드(https://smartstore.naver.com/musicland)  
+
+
+2020.01.04
+> soundlook("http://soundlook.co.kr/index.html")
