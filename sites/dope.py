@@ -30,6 +30,8 @@ def getBeatitMusicResult(keyword):
                 link = "http://beatit.co.kr" + title.find('a')['href']
                 priceTag = data.find('ul', attrs={'class':'xans-element- xans-search xans-search-listitem spec'})
                 price = priceTag.find_all('span', attrs={'style':'font-size:12px;color:#008BCC;font-weight:bold;'})[-1].text
+                if price == "품절":
+                    soldout = False
                 img_src = "http://" + data.find('img')['src'][2:]
                 if soldout:
                     vinyl = Vinyl(link, vinylTitle, price, soldout, "beatit", img_src)
