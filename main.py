@@ -38,5 +38,5 @@ if __name__ == "__main__":
     doWelcomeRecords(keyword)
     print("=========== ============= ===========")
 
-# sixshop base : welcome, soundsgood, seoulvinyl
+# sixshop base(api) : welcome, soundsgood, seoulvinyl
 

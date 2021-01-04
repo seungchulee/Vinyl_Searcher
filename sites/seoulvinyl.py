@@ -36,12 +36,10 @@ def getSeoulVinylResult(keyword):
             title = arg['productName']
             price = arg['productAppliedDiscountEventPrice']
             img_src = arg['imageUrl']
-            prevsoldout = productPrevSoldout(arg['productNo'])
-            if prevsoldout:
-                soldout = productSoldout(arg['productAddress'])
-                if soldout:
-                    vinyl = Vinyl(link, title, price, soldout, "SeoulVinyl", img_src)
-                    returnList.append(vinyl)
+            soldout = productSoldout(arg['productAddress'])
+            if soldout:
+                vinyl = Vinyl(link, title, price, soldout, "SeoulVinyl", img_src)
+                returnList.append(vinyl)
         i += 1
     return returnList
 
@@ -49,8 +47,8 @@ def getSeoulVinylResult(keyword):
 def productSoldout(name):
     resp = requests.get("https://www.seoulvinyl.com/product/" + name)
     bs = BeautifulSoup(resp.content, 'html.parser')
-    b = bs.find('div', attrs={'class': 'productQuantityDiv row designSettingElement text-body'})
-    return b is not None
+    b = bs.find('button', attrs={'class': 'buyNow designSettingElement button notWorkingButton'})
+    return b is None
 
 
 def productPrevSoldout(productNo):
@@ -64,4 +62,5 @@ def productPrevSoldout(productNo):
     }
     soldResp = requests.post(soldOutRequest, data=soldPayload)
     soldString = json.loads(soldResp.content)
+    print(soldString)
     return soldString['shopProduct']['inventory']['total'] != 0

@@ -35,12 +35,10 @@ def getSoundsGoodResult(keyword):
             title = arg['productName']
             price = arg['productAppliedDiscountEventPrice']
             img_src = arg['imageUrl']
-            prevsoldout = productPrevSoldout(arg['productNo'])
-            if prevsoldout:
-                soldout = productSoldout(arg['productAddress'])
-                if soldout:
-                    vinyl = Vinyl(link, title, price, soldout, "SoundsGood", img_src)
-                    returnList.append(vinyl)
+            soldout = productSoldout(arg['productAddress'])
+            if soldout:
+                vinyl = Vinyl(link, title, price, soldout, "SoundsGood", img_src)
+                returnList.append(vinyl)
         i += 1
     return returnList
 
@@ -48,8 +46,8 @@ def getSoundsGoodResult(keyword):
 def productSoldout(name):
     resp = requests.get("https://www.soundsgood-store.com/product/" + name)
     bs = BeautifulSoup(resp.content, 'html.parser')
-    b = bs.find('div', attrs={'class': 'productQuantityDiv row designSettingElement text-body'})
-    return b is not None
+    b = bs.find('button', attrs={'class': 'buyNow designSettingElement button notWorkingButton'})
+    return b is None
 
 
 def productPrevSoldout(productNo):
