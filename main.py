@@ -6,6 +6,7 @@ from sites.soundlook import doSoundLook
 from sites.soundsgood import doSoundsGood
 from sites.welcomerecords import doWelcomeRecords
 from sites.rm360 import dorm360
+from sites.bigPortal import printBigPortal
 
 if __name__ == "__main__":
     print("Keyword you want to Search : ", end="")
@@ -46,6 +47,9 @@ if __name__ == "__main__":
     print("==========      rm360     ===========")
     dorm360(keyword)
     print("=========== ============= ===========")
+
+    print("그 외 참고하면 좋을 사이트")
+    printBigPortal(keyword)
 
 # sixshop base(api) : welcome, soundsgood, seoulvinyl
 

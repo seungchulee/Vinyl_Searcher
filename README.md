@@ -33,4 +33,5 @@ show you vinyl result with your keyword
 
 
 2020.01.06
-> 김밥레코즈2(http://gimbabrecords2.com/index.html)
+> 김밥레코즈2(http://gimbabrecords2.com/index.html)  
+> 그 외 참고 할만한 사이트들 (sites/bigPortal.py)
