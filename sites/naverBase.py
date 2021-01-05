@@ -55,10 +55,11 @@ def getNaverBaseResult(keyword, site):
                 price = vin.find('span', attrs={'class':'_11N87Svo1h'}).text
                 link = "https://smartstore.naver.com" + vin.find('a', attrs={'class':'cj7gkLIEbC N=a:lst.product linkAnchor'})['href']
                 img_src = vin.find('img', attrs={'class':'_25CKxIKjAk'})['src']
-                soldout = False
-                soldoutText = str(vin.find('span', attrs={'class': 'text blind'}))
-                if "일시 품절" not in soldoutText:
-                    soldout = True
+                soldout = True
+                soldoutText = vin.find_all('span', attrs={'class': 'text blind'})
+                for st in soldoutText:
+                    if "일시 품절" in str(st):
+                        soldout = False
                 if soldout:
                     vinyl = Vinyl(link, title, price, soldout, site, img_src)
                     returnList.append(vinyl)
@@ -69,10 +70,11 @@ def getNaverBaseResult(keyword, site):
                 price = vin.find('span', attrs={'class': '_3_9J443eIx'}).text
                 link = "https://smartstore.naver.com" + vin.find('a', attrs={'class':'_1vVKEk_wsi N=a:lst.product linkAnchor'})['href']
                 img_src = vin.find('img', attrs={'class':'_25CKxIKjAk'})['src']
-                soldout = False
-                soldoutText = str(vin.find('span', attrs={'class': 'text blind'}))
-                if "일시 품절" not in soldoutText:
-                    soldout = True
+                soldout = True
+                soldoutText = vin.find_all('span', attrs={'class': 'text blind'})
+                for st in soldoutText:
+                    if "일시 품절" in str(st):
+                        soldout = False
                 if soldout:
                     vinyl = Vinyl(link, title, price, soldout, site, img_src)
                     returnList.append(vinyl)
