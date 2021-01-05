@@ -30,3 +30,7 @@ show you vinyl result with your keyword
 
 2020.01.05
 > rm360(http://rm360.cafe24.com/index.html)  
+
+
+2020.01.06
+> 김밥레코즈2(http://gimbabrecords2.com/index.html)

@@ -1,4 +1,4 @@
-from sites.gimbab import doGimBab
+from sites.gimbab import doGimBab, doGimBab2
 from sites.seoulvinyl import doSeoulVinyl
 from sites.dope import doBeatitMusic
 from sites.naverBase import doNaver
@@ -13,6 +13,10 @@ if __name__ == "__main__":
 
     print("=========== GimBabRecords ===========")
     doGimBab(keyword)
+    print("=========== ============= ===========")
+
+    print("=========== GimBabRecord2 ===========")
+    doGimBab2(keyword)
     print("=========== ============= ===========")
 
     print("===========  SeoulVinyl   ===========")
