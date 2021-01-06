@@ -17,8 +17,6 @@ def getWelcomeResult(keyword):
     i = 1
     returnList = []
     while True:
-        if i == 2:
-            break
         payload = {
             "memberNo": 103345,
             "shopCategoryNoList": "categorized",
