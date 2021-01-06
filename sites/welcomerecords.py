@@ -1,7 +1,10 @@
+import time
 import requests
 import json
 from back.vinyl import Vinyl
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 
 def doWelcomeRecords(keyword):
     welcomeResult = getWelcomeResult(keyword)
@@ -14,6 +17,8 @@ def getWelcomeResult(keyword):
     i = 1
     returnList = []
     while True:
+        if i == 2:
+            break
         payload = {
             "memberNo": 103345,
             "shopCategoryNoList": "categorized",
@@ -21,10 +26,18 @@ def getWelcomeResult(keyword):
             "page": i,
             "npp": 48,
             "searchKeyword": keyword,
-            "siteNo": 103345
+            "siteNo": 103345,
+            "siteLink": "welcomerecords"
         }
         requestUrl = "https://welcomerecords.kr/_shop/getShopProductSummariseBySearchKeyword"
-        resp = requests.post(requestUrl, data=payload)
+        try:
+            resp = requests.post(requestUrl, data=payload)
+        except requests.exceptions.ConnectionError as e:
+            print("WELCOME RECORDS ERROR!!")
+            welcomeUrl = "https://welcomerecords.kr/productSearch?productSearchKeyword=" + keyword
+            print("try visit here ---->", welcomeUrl)
+            break
+
         content = resp.content
         jsonString = json.loads(content)
         products = jsonString['shopProductList']
