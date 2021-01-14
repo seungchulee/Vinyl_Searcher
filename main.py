@@ -8,7 +8,8 @@ from sites.welcomerecords import doWelcomeRecords
 from sites.rm360 import dorm360
 from sites.bigPortal import printBigPortal
 
-if __name__ == "__main__":
+
+def search():
     print("Keyword you want to Search : ", end="")
     keyword = input()
 
@@ -51,5 +52,27 @@ if __name__ == "__main__":
     print("그 외 참고하면 좋을 사이트")
     printBigPortal(keyword)
 
-# sixshop base(api) : welcome, soundsgood, seoulvinyl
+    # sixshop base(api) : welcome, soundsgood, seoulvinyl
+
+
+def show_new():
+    pass
+
+
+if __name__ == "__main__":
+    while True:
+        print("1. Search (검색)")
+        print("2. New (신상품)")
+        print("3. Quit")
+        print("What do you want to do? : ", end="")
+        menu = input()
+
+        if menu == "1":
+            search()
+        elif menu == "2":
+            show_new()
+        elif menu == "3":
+            break
+        else:
+            print("wrong menu")
 
