@@ -79,3 +79,16 @@ def getNaverBaseResult(keyword, site):
                     vinyl = Vinyl(link, title, price, soldout, site, img_src)
                     returnList.append(vinyl)
     return returnList
+
+
+def getNewNaver(site):
+    return []
+
+
+def showNewNaver():
+    for site in naverBase:
+        naverList = getNewNaver(site)
+        print("----------- ------------- -----------")
+        print(site, "에서", len(naverList), "개의 결과가 있습니다")
+        for nav in naverList:
+            print(nav.title, nav.price, nav.soldOut, nav.link)

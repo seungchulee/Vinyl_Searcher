@@ -1,7 +1,7 @@
 from sites.gimbab import doGimBab, doGimBab2
 from sites.seoulvinyl import doSeoulVinyl
 from sites.dope import doBeatitMusic
-from sites.naverBase import doNaver
+from sites.naverBase import doNaver, showNewNaver
 from sites.soundlook import doSoundLook
 from sites.soundsgood import doSoundsGood
 from sites.welcomerecords import doWelcomeRecords
@@ -56,7 +56,7 @@ def search():
 
 
 def show_new():
-    pass
+    showNewNaver()
 
 
 if __name__ == "__main__":
