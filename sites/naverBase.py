@@ -13,7 +13,13 @@ naverBase = {
     "라보앤드": "https://smartstore.naver.com/lavoand/",
     "마뮤": "https://smartstore.naver.com/mamustore",
     "판다바이닐": "https://smartstore.naver.com/pandavinyl",
-    "뮤직랜드": "https://smartstore.naver.com/musicland"
+    "뮤직랜드": "https://smartstore.naver.com/musicland",
+    "구해줘굿즈": "https://smartstore.naver.com/getgoods",
+    "아메리칸오리진": "https://smartstore.naver.com/watsons",
+    "모카홀릭": "https://smartstore.naver.com/byeolne",
+    "쳇 베이커리": "https://smartstore.naver.com/chetbakery",
+    "바이어티": "https://smartstore.naver.com/buyerty",
+    "라운드뮤직": "https://smartstore.naver.com/sun_musicstore2019",
 }
 
 
@@ -52,7 +58,10 @@ def getNaverBaseResult(keyword, site):
             vinyls = bs.find_all('li', attrs={'class': '_3Lde95QPKh'})
             for vin in vinyls:
                 title = vin.find('strong', attrs={'class': '_3W4A_RFJRS'}).text
-                price = vin.find('span', attrs={'class':'_11N87Svo1h'}).text
+                pr = vin.find('span', attrs={'class': '_11N87Svo1h'})
+                if pr is None:
+                    continue
+                price = pr.text
                 link = "https://smartstore.naver.com" + vin.find('a', attrs={'class':'cj7gkLIEbC N=a:lst.product linkAnchor'})['href']
                 img_src = vin.find('img', attrs={'class':'_25CKxIKjAk'})['src']
                 soldout = True
