@@ -18,7 +18,7 @@ naverBase = {
     "구해줘굿즈": "https://smartstore.naver.com/getgoods",
     "아메리칸오리진": "https://smartstore.naver.com/watsons",
     "모카홀릭": "https://smartstore.naver.com/byeolne",
-    "쳇 베이커리": "https://smartstore.naver.com/chetbakery",
+    "쳇베이커리": "https://smartstore.naver.com/chetbakery",
     "바이어티": "https://smartstore.naver.com/buyerty",
     "라운드뮤직": "https://smartstore.naver.com/sun_musicstore2019",
 }
@@ -38,7 +38,7 @@ naverCode = {
     "구해줘굿즈": "https://smartstore.naver.com/i/v1/stores/100610551/categories/6b4d8688ed8a42f8b138c72a73c4a00c/products?categoryId=6b4d8688ed8a42f8b138c72a73c4a00c&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "아메리칸오리진": "https://smartstore.naver.com/i/v1/stores/100560456/categories/50000058/products?categoryId=50000058&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "모카홀릭": "https://smartstore.naver.com/i/v1/stores/100523535/categories/a04cee97cd7e47328295c39c96fcc1f1/products?categoryId=a04cee97cd7e47328295c39c96fcc1f1&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
-    "쳇 베이커리": "100580090",
+    "쳇베이커리": "100580090",
     "바이어티": "100646105",
     "라운드뮤직": "https://smartstore.naver.com/i/v1/stores/100747626/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 }
@@ -113,6 +113,17 @@ def getNaverBaseResult(keyword, site):
 
 def returnVinyl(products, site, newLink):
     return_list = []
+    save_str = ""
+    fileUrl = "./back/" + site + ".txt"
+    try:
+        fileData = open(fileUrl, "r")
+        existed_str = fileData.readline()
+        fileData.close()
+    except FileNotFoundError:
+        fileData = open(fileUrl, "w")
+        existed_str = ""
+        fileData.close()
+
     for prd in products:
         if len(return_list) == 10:
             break
@@ -127,8 +138,16 @@ def returnVinyl(products, site, newLink):
         img_src = prd['representativeImageUrl']
         if soldout:
             vinyl = Vinyl(link, title, price, soldout, link, img_src)
+            save_str += str(prd['id'])
             return_list.append(vinyl)
-    return return_list
+
+    f = open(fileUrl, 'w')
+    f.write(save_str)
+    f.close()
+    if existed_str != save_str:
+        return return_list, False
+    else:
+        return return_list, True
 
 
 def getNewNaver(site):
@@ -150,8 +169,10 @@ def getNewNaver(site):
 
 def showNewNaver():
     for site in naverBase:
-        naverList = getNewNaver(site)
+        naverList, same = getNewNaver(site)
         print("----------- ------------- -----------")
         print(site, "에서", len(naverList), "개의 결과가 있습니다")
+        if not same:
+            print("SOMETHING CHANGED!!!")
         for nav in naverList:
             print(nav.title, nav.price, nav.soldOut, nav.link)
