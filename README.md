@@ -41,3 +41,7 @@ show you vinyl result with your keyword
 > 구해줘 굿즈(https://smartstore.naver.com/getgoods), 아메리칸오리진(https://smartstore.naver.com/watsons)
 > 모카홀릭(https://smartstore.naver.com/byeolne), 쳇베이커리(https://smartstore.naver.com/chetbakery)
 > 바이어티(https://smartstore.naver.com/buyerty), 라운드뮤직(https://smartstore.naver.com/sun_musicstore2019)
+
+
+2021.01.17
+> naverBase 홈페이지 신상품 10개씩 보여주기
