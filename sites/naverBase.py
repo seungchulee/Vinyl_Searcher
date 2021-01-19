@@ -35,7 +35,7 @@ naverCode = {
     "마뮤": "100787591",
     "판다바이닐": "https://smartstore.naver.com/i/v1/stores/100975984/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "뮤직랜드": "500015866",
-    "구해줘굿즈": "https://smartstore.naver.com/i/v1/stores/100610551/categories/6b4d8688ed8a42f8b138c72a73c4a00c/products?categoryId=6b4d8688ed8a42f8b138c72a73c4a00c&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+    "구해줘굿즈": "https://smartstore.naver.com/i/v1/stores/100610551/categories/77f0e03857bf4726b9ead59820937e99/products?categoryId=77f0e03857bf4726b9ead59820937e99&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "아메리칸오리진": "https://smartstore.naver.com/i/v1/stores/100560456/categories/50000058/products?categoryId=50000058&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "모카홀릭": "https://smartstore.naver.com/i/v1/stores/100523535/categories/a04cee97cd7e47328295c39c96fcc1f1/products?categoryId=a04cee97cd7e47328295c39c96fcc1f1&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "쳇베이커리": "100580090",
