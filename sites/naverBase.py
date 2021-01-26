@@ -114,7 +114,7 @@ def getNaverBaseResult(keyword, site):
 def returnVinyl(products, site, newLink):
     return_list = []
     save_str = ""
-    fileUrl = "./back/" + site + ".txt"
+    fileUrl = "./back/info/" + site + ".txt"
     try:
         fileData = open(fileUrl, "r")
         existed_str = fileData.readline()
