@@ -4,7 +4,8 @@ show you vinyl result with your keyword
 
 ## how to use (need to updated)
 1. ```python3 main.py```
-2. enter keyword you want to search
+2. menu 1 -> search keyword
+3. menu 2 -> show new release (새로운 상품 보여주기) -> if SOMETHING CHANGED!!
 
 ## version (history)
 2020.12.31   
