@@ -21,17 +21,21 @@ naverBase = {
     "쳇베이커리": "https://smartstore.naver.com/chetbakery",
     "바이어티": "https://smartstore.naver.com/buyerty",
     "라운드뮤직": "https://smartstore.naver.com/sun_musicstore2019",
+    "인펙션스 레코드": "https://smartstore.naver.com/infectionsrecord",
+    "비트볼 뮤직": "https://smartstore.naver.com/beatball",
+    "서울 바이닐": "https://smartstore.naver.com/seoulvinyl",
+    "더 슬로우 샵": "https://smartstore.naver.com/theslowshop"
 }
 
 naverCode = {
     "아이텐": "https://smartstore.naver.com/i/v1/stores/500270672/categories/ad7d0d900c8d43b0b53977186cfa12bc/products?categoryId=ad7d0d900c8d43b0b53977186cfa12bc&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
-    "기기레코즈": "100632872",
-    "바이닐코리아": "100599518",
+    "기기레코즈": "https://smartstore.naver.com/i/v1/stores/100632872/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+    "바이닐코리아": "https://smartstore.naver.com/i/v1/stores/100599518/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "마이페이보릿스토어": "100517823",
     "하이닐": "100797246",
     "테리픽잼": "100710783",
     "레코드스톡": "100804461",
-    "라보앤드": "100078012",
+    "라보앤드": "https://smartstore.naver.com/i/v1/stores/100078012/categories/50000058/products?categoryId=50000058&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "마뮤": "100787591",
     "판다바이닐": "https://smartstore.naver.com/i/v1/stores/100975984/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "뮤직랜드": "500015866",
@@ -39,8 +43,12 @@ naverCode = {
     "아메리칸오리진": "https://smartstore.naver.com/i/v1/stores/100560456/categories/50000058/products?categoryId=50000058&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "모카홀릭": "https://smartstore.naver.com/i/v1/stores/100523535/categories/a04cee97cd7e47328295c39c96fcc1f1/products?categoryId=a04cee97cd7e47328295c39c96fcc1f1&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "쳇베이커리": "100580090",
-    "바이어티": "100646105",
+    "바이어티": "https://smartstore.naver.com/i/v1/stores/100646105/categories/ALL/products?categoryId=ALL&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
     "라운드뮤직": "https://smartstore.naver.com/i/v1/stores/100747626/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+    "인펙션스 레코드": "https://smartstore.naver.com/i/v1/stores/100619159/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+    "비트볼 뮤직": "https://smartstore.naver.com/i/v1/stores/500280301/categories/a3fc780959544cb0b6d38218587d7590/products?categoryId=a3fc780959544cb0b6d38218587d7590&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+    "서울 바이닐": "https://smartstore.naver.com/i/v1/stores/100129192/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+    "더 슬로우 샵": "https://smartstore.naver.com/i/v1/stores/101009441/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40"
 }
 
 
