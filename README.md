@@ -71,3 +71,15 @@ show you vinyl result with your keyword
     비트볼 뮤직 : https://smartstore.naver.com/beatball
     서울 바이닐 : https://smartstore.naver.com/seoulvinyl
     더 슬로우 샵 : https://smartstore.naver.com/theslowshop
+    
+2021.06.05
+> naverBase 홈페이지 신상 사이트 추가 + go API server 만듦
+
+    서울 레코드 : https://smartstore.naver.com/seoulrecord
+    드림 레코드 : https://smartstore.naver.com/dreamrec
+    사운드룩 : https://smartstore.naver.com/soundlook
+    바이닐 앤 바이브 : https://smartstore.naver.com/vinylnvibe
+    아이러브뷰직 : https://smartstore.naver.com/ilovemusic_kr
+    슬로우 바이닐 : https://smartstore.naver.com/slowvinyl
+   
+   
