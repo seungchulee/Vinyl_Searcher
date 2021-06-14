@@ -16,7 +16,7 @@ import (
 var naverBase = map[string]string{
 	"아이텐":       "https://smartstore.naver.com/i-10",
 	"기기레코즈":     "https://smartstore.naver.com/gigirecords",
-	"바이닐코리아":    "https://smartstore.naver.com/waxtime",
+	"바이닐코리아":    "https://smartstore.naver.com/vinylkor",
 	"마이페이보릿스토어": "https://smartstore.naver.com/cinemastore",
 	"하이닐":       "https://smartstore.naver.com/hinyl",
 	"테리픽잼":      "https://smartstore.naver.com/terrific_jam",
@@ -49,7 +49,7 @@ var code = map[string]string{
 	"바이닐코리아":    "https://smartstore.naver.com/i/v1/stores/100599518/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"마이페이보릿스토어": "100517823",
 	"하이닐":       "100797246",
-	"테리픽잼":      "100710783",
+	"테리픽잼":      "https://smartstore.naver.com/i/v1/stores/100710783/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"레코드스톡":     "100804461",
 	"라보앤드":      "https://smartstore.naver.com/i/v1/stores/100078012/categories/50000058/products?categoryId=50000058&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"마뮤":        "100787591",
@@ -62,7 +62,7 @@ var code = map[string]string{
 	"바이어티":      "https://smartstore.naver.com/i/v1/stores/100646105/categories/ALL/products?categoryId=ALL&categorySearchType=STDCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"라운드뮤직":     "https://smartstore.naver.com/i/v1/stores/100747626/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"인펙션스 레코드":  "https://smartstore.naver.com/i/v1/stores/100619159/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
-	"비트볼 뮤직":    "https://smartstore.naver.com/i/v1/stores/500280301/categories/a3fc780959544cb0b6d38218587d7590/products?categoryId=a3fc780959544cb0b6d38218587d7590&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
+	"비트볼 뮤직":    "https://smartstore.naver.com/i/v1/stores/500280301/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"서울 바이닐":    "https://smartstore.naver.com/i/v1/stores/100129192/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"더 슬로우 샵":   "https://smartstore.naver.com/i/v1/stores/101009441/categories/ALL/products?categoryId=ALL&categorySearchType=DISPCATG&sortType=RECENT&free=false&page=1&pageSize=40",
 	"서울 레코드":    "500173380",
@@ -94,10 +94,11 @@ type returnDataFormat struct {
 	Price  int
 	ImgSrc string
 	Link   string
+	Where  string
 	Id     int
 }
 
-func getNewNaver(code, url string, newChan chan []returnDataFormat) {
+func getNewNaver(code, url, where string, newChan chan []returnDataFormat) {
 	var returns []returnDataFormat
 	requestUrl := ""
 	isNew := false
@@ -127,6 +128,7 @@ func getNewNaver(code, url string, newChan chan []returnDataFormat) {
 				Name:   data.Name,
 				ImgSrc: data.ImgSrc,
 				Price:  data.Price,
+				Where:  where,
 				Link:   url + "/products/" + strconv.Itoa(data.Id),
 			})
 		}
@@ -146,6 +148,7 @@ func getNewNaver(code, url string, newChan chan []returnDataFormat) {
 				Name:   data.SimpleProduct.Name,
 				ImgSrc: data.SimpleProduct.ImgSrc,
 				Price:  data.SimpleProduct.Price,
+				Where:  where,
 				Link:   url + "/products/" + strconv.Itoa(data.SimpleProduct.Id),
 			})
 		}
@@ -153,19 +156,35 @@ func getNewNaver(code, url string, newChan chan []returnDataFormat) {
 	newChan <- returns
 }
 
+func makeNewResponse(response []returnDataFormat) map[string][]returnDataFormat {
+	newR := map[string][]returnDataFormat{}
+	for _, data := range response {
+		where := data.Where
+		if _, ok := newR[where]; !ok {
+			newR[where] = []returnDataFormat{data}
+		} else {
+			newR[where] = append(newR[where], data)
+		}
+	}
+	return newR
+}
+
 func getNewData(w http.ResponseWriter, r *http.Request) {
 	newChan := make(chan []returnDataFormat)
 	for idx, data := range code {
 		url := naverBase[idx]
-		go getNewNaver(data, url, newChan)
+		go getNewNaver(data, url, idx, newChan)
 	}
-	response := make(map[string][]returnDataFormat)
-	for idx := range code {
+	var response []returnDataFormat
+	for range code {
 		resp := <- newChan
-		response[idx] = resp
+		response = append(response, resp...)
 	}
 	close(newChan)
-	json.NewEncoder(w).Encode(response)
+
+	newResponse := makeNewResponse(response)
+
+	json.NewEncoder(w).Encode(newResponse)
 }
 
 func main() {

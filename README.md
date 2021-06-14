@@ -21,7 +21,7 @@ show you vinyl result with your keyword
 
     아이텐 : https://smartstore.naver.com/i-10
     기기레코즈 : https://smartstore.naver.com/gigirecords   
-    바이닐코리아 : https://smartstore.naver.com/waxtime
+    바이닐코리아 : https://smartstore.naver.com/vinylkor/
     마이페이보릿스토어 : https://smartstore.naver.com/cinemastore   
     하이닐 : https://smartstore.naver.com/hinyl
     테리픽잼 : https://smartstore.naver.com/terrific_jam   
