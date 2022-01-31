@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -156,7 +155,6 @@ func getNewData(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("Hello World!")
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/new", getNewData).Methods("GET")
 	log.Fatal(http.ListenAndServe(":1111", router))
