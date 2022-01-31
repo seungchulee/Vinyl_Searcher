@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// main function
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/api/new", service.GetNewData).Methods("GET")
