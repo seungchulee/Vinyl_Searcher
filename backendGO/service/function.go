@@ -71,5 +71,8 @@ func GetNewData(w http.ResponseWriter, r *http.Request) {
 
 	newResponse := makeNewResponse(response)
 
-	json.NewEncoder(w).Encode(newResponse)
+	err := json.NewEncoder(w).Encode(newResponse)
+	if err != nil {
+		log.Println(err)
+	}
 }
