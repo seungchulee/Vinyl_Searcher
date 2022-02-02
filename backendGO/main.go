@@ -13,5 +13,7 @@ import (
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/api/new", service.GetNewData).Methods("GET")
-	log.Fatal(http.ListenAndServe(":1111", router))
+	go http.ListenAndServe(":8080", nil)
+
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
